@@ -159,9 +159,7 @@ main(int argc, char * argv[])
       scanf("%lf", &urating[j]);
     }
 
-/* Get user input. */
-  printf("Enter the number of similar viewers to report: ");
-  scanf("%zu", &k);
+
 
     for (int r = 1; r < p; r++) {
       ret = MPI_Send(urating, m - 1, MPI_DOUBLE, r, 0, MPI_COMM_WORLD);
@@ -215,9 +213,15 @@ main(int argc, char * argv[])
   qsort(array2, n, sizeof(*array2), cmp);
   
   
+  /* Get user input. */
 
+  printf("Enter the number of similar viewers to report: ");
+  fflush(stdout);
+  scanf("%zu", &k);
+  
   /* Output k viewers who are least different from the user. */
   printf("Viewer ID   Movie five   Distance\n");
+  fflush(stdout);
   printf("---------------------------------\n");
 
   for (size_t i = 0; i < k; i++) {
